@@ -1,0 +1,37 @@
+
+	<!DOCTYPE html>
+        <html>
+        <head>
+        <title>Web Workers</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<style>
+	body {
+	background-color: yellow;
+	}
+	</style>
+        </head>
+        <body>
+        <blockquote><p>Loop 1: <output id="result1"></output></p></blockquote>
+
+        <blockquote><p>Loop 2: <output id="result2"></output></p></blockquote>
+
+        <script>
+
+        var worker1 = new Worker('worker.js');
+        worker1.onmessage = function (event) {
+        document.getElementById('result1').textContent = event.data;
+        };
+
+        var worker2 = new Worker('worker.js');
+        worker2.onmessage = function (event) {
+        document.getElementById('result2').textContent = event.data;
+        };
+
+        </script>
+
+        </body>
+        </html>	  		
+	  
